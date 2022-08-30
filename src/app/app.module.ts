@@ -7,6 +7,8 @@ import { HomePageComponent } from './pages/home-page/home-page.component';
 import { HeaderComponent } from './core/components/header/header.component';
 import { ProductsPageComponent } from './pages/products-page/products-page.component';
 import { FormPageComponent } from './pages/form-page/form-page.component';
+import { GalleryComponent } from './shared/components/gallery/gallery.component';
+import { ProductCardComponent } from './shared/components/product-card/product-card.component';
 
 @NgModule({
   declarations: [
@@ -14,7 +16,9 @@ import { FormPageComponent } from './pages/form-page/form-page.component';
     HomePageComponent,
     HeaderComponent,
     ProductsPageComponent,
-    FormPageComponent
+    FormPageComponent,
+    GalleryComponent,
+    ProductCardComponent
   ],
   imports: [
     BrowserModule,
