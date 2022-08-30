@@ -1,1 +1,32 @@
-<p>header works!</p>
+<div class="text-center picture-container">
+    <img src="../../../assets/Images/logo.png" alt="" srcset="">
+</div>
+<div class="nav-container">
+    <ul class="nav justify-content-center">
+        <li class="nav-item">
+            <a class="nav-link" [routerLink]="['/home']">
+                <div class="text-center">
+                    <i class="bi bi-house"></i>
+                    <p>Home</p>
+                </div>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" [routerLink]="['/products']">
+                <div class="text-center">
+                    <i class="bi bi-binoculars"></i>
+                    <p>Prods</p>
+                </div>
+            </a>
+        </li>
+
+        <li class="nav-item">
+            <a class="nav-link " [routerLink]="['/new']">
+                <div class="text-center">
+                    <i class="bi bi-pencil-square"></i>
+                    <p>Create/Edit</p>
+                </div>
+            </a>
+        </li>
+    </ul>
+</div>
