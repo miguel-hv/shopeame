@@ -1,1 +1,5 @@
-<app-product-card *ngFor="let item of list" [product]="item"></app-product-card>
+<div class="container">
+    <div class="row">         
+            <app-product-card *ngFor="let item of list" [product]="item"  class="col-6"></app-product-card>
+    </div>
+</div>

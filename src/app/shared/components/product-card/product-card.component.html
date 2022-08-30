@@ -1,1 +1,14 @@
-{{product.name}}
+<div class="m-3">
+    <div class="card">
+        <img src="{{product.image}}" class="card-img-top" alt="{{product.description}}">
+        <div class="card-body">
+            <p class="card-text">{{product.name}}</p>
+            <h5 class="card-title">€{{product.price}}</h5>
+            <p class="card-text">{{product.description}}</p>
+            <div class="row">
+                <div class="col-6 rating">{{product.stars}} </div>
+                <div class="col-6 text-right"><a [routerLink]="['/product/'+product.id]" class="btn btn-light ">editar</a></div>
+            </div>
+        </div>
+    </div>
+</div>
