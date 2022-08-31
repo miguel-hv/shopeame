@@ -9,6 +9,7 @@ import { ProductsPageComponent } from './pages/products-page/products-page.compo
 import { FormPageComponent } from './pages/form-page/form-page.component';
 import { GalleryComponent } from './shared/components/gallery/gallery.component';
 import { ProductCardComponent } from './shared/components/product-card/product-card.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { ProductCardComponent } from './shared/components/product-card/product-c
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
