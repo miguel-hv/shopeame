@@ -1,6 +1,6 @@
 import { Product } from './../../models/product.model';
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, NonNullableFormBuilder, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-form-page',
@@ -9,35 +9,53 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 })
 export class FormPageComponent implements OnInit {
 
-  productForm: any;
+  productForm = this.formBuilder.group({
+    name: ['', Validators.required],
+    price: [0,[Validators.min(0)]],
+    description: '', 
+    rating: [0,[Validators.min(0), Validators.max(5)]],
+    image: ['', [Validators.required]],
+  }); 
+
   isSubmitted:boolean = false;
 
-  constructor(private formBuilder: FormBuilder) { 
-    this.productForm = this.formBuilder.group({
-      name: ['', Validators.required],
-      price: [0,[Validators.min(0)]],
-      description: '', 
-      rating: [0,[Validators.min(0), Validators.max(5)]],
-      image: ['', [Validators.required]],
-    });
+  constructor(private formBuilder: NonNullableFormBuilder) { 
+    // this.productForm = this.formBuilder.group({
+    //   name: ['', Validators.required],
+    //   price: [0,[Validators.min(0)]],
+    //   description: '', 
+    //   rating: [0,[Validators.min(0), Validators.max(5)]],
+    //   image: ['', [Validators.required]],
+    // });
   }
 
   ngOnInit(): void {
   }
 
+
+  // this.myForm.valueChanges
+  // .filter(() => this.myForm.valid)
+  // .map(value => new Lesson(value.title, value.duration,
+  //     value.description,"",StudentLevel.BEGINNER))
+  // .do(formValue => console.log("Valid Form Value:", formValue))
+  // .subscribe(
+  //     lesson => this.lesson = lesson
+  // );
+
   public onSubmit(): void {
     this.isSubmitted = true;
     // if (this.productForm.valid) {
-      const product: any = {
-        name: this.productForm.get('name').value,
-        price: this.productForm.get('price').value,
-        description: this.productForm.get('description').value,
-        rating: this.productForm.get('rating').value,
-        image: this.productForm.get('image').value,
-      };
-      console.log(product);
+      // const product: any = {
+      //   name: this.productForm.get('name').value,
+      //   price: this.productForm.get('price').value,
+      //   description: this.productForm.get('description').value,
+      //   rating: this.productForm.get('rating').value,
+      //   image: this.productForm.get('image').value,
+      // };
+      console.log(this.productForm);
+      console.log(this.productForm.value);
 
-      this.productForm.reset();
+      // this.productForm.reset();
       this.isSubmitted = false;
     // }
   }

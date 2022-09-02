@@ -1,7 +1,7 @@
 <div class="container bg-white">
     <h3>Creación/edición de productos</h3>
     <div class="row">
-        <div class="col-md-6 mb-3 border-end">
+        <div>
             <form [formGroup]="productForm" (ngSubmit)="onSubmit()">
                 <input type="hidden" class="form-control mb-3" formControlName="name">
 
@@ -22,8 +22,8 @@
                 <label for="rating" class="form-label">Opiniones:</label>
                 <input type="number" class="form-control mb-3" placeholder="Por ej: 4.28" formControlName="rating">
 
-                <div class="btn-group" role="group" aria-label="Basic outlined example">
-                    <input type="submit" class="form-control mb-3 btn btn-warning " value="Guardar ">
+                <div role="group" aria-label="Basic outlined example">
+                    <input type="submit" class="b-btn" value="Guardar ">
                 </div>
             </form>
         </div>
