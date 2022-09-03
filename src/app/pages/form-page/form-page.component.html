@@ -7,11 +7,22 @@
 
                 <label for="name" class="form-label">Nombre del producto:</label>
                 <input type="text" class="form-control mb-3" placeholder="Por ej: Tiesto para planta" formControlName="name">
-
+                <div *ngIf="form.name?.invalid && form.name?.touched" class="alert alert-danger">
+                    <div *ngIf="form.name.errors?.['required']">
+                        Campo obligatorio
+                    </div>
+                </div>
 
                 <label for="price" class="form-label">Precio:</label>
                 <input type="number" class="form-control mb-3" placeholder="Por ej: 9.50" formControlName="price">
-
+                <div *ngIf="form.price?.invalid && form.price?.touched" class="alert alert-danger">
+                    <div *ngIf="form.price.errors?.['required']">
+                        Campo obligatorio
+                    </div>
+                    <div *ngIf="form.price.errors?.['min']">
+                        Precio inválido
+                    </div>
+                </div>
 
                 <label for="description" class="form-label">Descripción:</label>
                 <textarea class="form-control mb-3" placeholder="Por ej: Lo más vendido este mes" formControlName="description" rows="3"></textarea>
@@ -21,6 +32,17 @@
 
                 <label for="rating" class="form-label">Opiniones:</label>
                 <input type="number" class="form-control mb-3" placeholder="Por ej: 4.28" formControlName="rating">
+                <div *ngIf="form.rating?.invalid && form.rating?.touched" class="alert alert-danger">
+                    <div *ngIf="form.rating.errors?.['required']">
+                        Campo obligatorio
+                    </div>
+                    <div *ngIf="form.rating.errors?.['min']">
+                        Rango de 0 a 5
+                    </div>
+                    <div *ngIf="form.rating.errors?.['max']">
+                        Rango de 0 a 5
+                    </div>
+                </div>
 
                 <div role="group" aria-label="Basic outlined example">
                     <input type="submit" class="b-btn" value="Guardar ">

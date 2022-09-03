@@ -11,11 +11,15 @@ export class FormPageComponent implements OnInit {
 
   productForm = this.formBuilder.group({
     name: ['', Validators.required],
-    price: [0,[Validators.min(0)]],
+    price: [0,[Validators.required, Validators.min(0)]],
     description: '', 
-    rating: [0,[Validators.min(0), Validators.max(5)]],
-    image: ['', [Validators.required]],
+    rating: [0,[Validators.required, Validators.min(0), Validators.max(5)]],
+    image: [''],
   }); 
+
+  get form (){
+    return this.productForm.controls;
+  }
 
   isSubmitted:boolean = false;
 
@@ -30,7 +34,12 @@ export class FormPageComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.productForm.valueChanges.subscribe((changes) => {
+      console.log(changes);
+    })
+    console.log(this.form.name);
   }
+
 
 
   // this.myForm.valueChanges
