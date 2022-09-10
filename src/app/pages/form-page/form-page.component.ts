@@ -1,6 +1,6 @@
 import { Product } from './../../models/product.model';
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, NonNullableFormBuilder, Validators } from '@angular/forms';
+import { NonNullableFormBuilder, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-form-page',
@@ -9,12 +9,21 @@ import { FormBuilder, FormGroup, NonNullableFormBuilder, Validators } from '@ang
 })
 export class FormPageComponent implements OnInit {
 
+  product: Product = {    
+    name: "",
+    price: 0,
+    description: "",
+    rating: 0,
+    image: "",
+  };
+  // product: any={};
+
   productForm = this.formBuilder.group({
     name: ['', Validators.required],
     price: [0,[Validators.required, Validators.min(0)]],
     description: '', 
     rating: [0,[Validators.required, Validators.min(0), Validators.max(5)]],
-    image: [''],
+    image: '',
   }); 
 
   get form (){
@@ -24,43 +33,24 @@ export class FormPageComponent implements OnInit {
   isSubmitted:boolean = false;
 
   constructor(private formBuilder: NonNullableFormBuilder) { 
-    // this.productForm = this.formBuilder.group({
-    //   name: ['', Validators.required],
-    //   price: [0,[Validators.min(0)]],
-    //   description: '', 
-    //   rating: [0,[Validators.min(0), Validators.max(5)]],
-    //   image: ['', [Validators.required]],
-    // });
   }
 
   ngOnInit(): void {
-    this.productForm.valueChanges.subscribe((changes) => {
-      console.log(changes);
-    })
-    console.log(this.form.name);
   }
 
-
-
-  // this.myForm.valueChanges
-  // .filter(() => this.myForm.valid)
-  // .map(value => new Lesson(value.title, value.duration,
-  //     value.description,"",StudentLevel.BEGINNER))
-  // .do(formValue => console.log("Valid Form Value:", formValue))
-  // .subscribe(
-  //     lesson => this.lesson = lesson
-  // );
 
   public onSubmit(): void {
     this.isSubmitted = true;
     // if (this.productForm.valid) {
-      // const product: any = {
-      //   name: this.productForm.get('name').value,
-      //   price: this.productForm.get('price').value,
-      //   description: this.productForm.get('description').value,
-      //   rating: this.productForm.get('rating').value,
-      //   image: this.productForm.get('image').value,
-      // };
+      this.product = {
+        name: this.productForm.get('name')!.value,
+        price: this.productForm.get('price')!.value,
+        description: this.productForm.get('description')!.value,
+        rating: this.productForm.get('rating')!.value,
+        image: this.productForm.get('image')!.value,
+      };
+      // this.product = this.productForm.value;
+
       console.log(this.productForm);
       console.log(this.productForm.value);
 
