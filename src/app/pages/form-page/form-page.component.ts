@@ -1,6 +1,8 @@
+import { ProductsService } from 'src/app/products.service';
 import { Product } from './../../models/product.model';
 import { Component, OnInit } from '@angular/core';
 import { NonNullableFormBuilder, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-form-page',
@@ -32,7 +34,11 @@ export class FormPageComponent implements OnInit {
 
   isSubmitted:boolean = false;
 
-  constructor(private formBuilder: NonNullableFormBuilder) { 
+  constructor(
+    private formBuilder: NonNullableFormBuilder, 
+    private productsService: ProductsService,
+    private router: Router
+    ) { 
   }
 
   ngOnInit(): void {
@@ -54,8 +60,12 @@ export class FormPageComponent implements OnInit {
       console.log(this.productForm);
       console.log(this.productForm.value);
 
+      this.productsService.postProduct(this.product);
+      this.router.navigate(['/products']);
+
       // this.productForm.reset();
       this.isSubmitted = false;
+
     // }
   }
 
